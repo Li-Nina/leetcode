@@ -1,17 +1,22 @@
 class Solution:
+    def reverse(self, nums, start, end):
+        while start < end:
+            temp = nums[end]
+            nums[end] = nums[start]
+            nums[start] = temp
+            start += 1
+            end -= 1
+
     def rotate(self, nums, k):
         """
         :type nums: List[int]
         :type k: int
         :rtype: void Do not return anything, modify nums in-place instead.
         """
-        while k:
-            temp = nums[len(nums) - 1]
-            for i in range(len(nums) - 1, 0, -1):
-                nums[i] = nums[i - 1]
-            nums[0] = temp
-            k = k - 1
-        return nums
+        k = k % len(nums)
+        self.reverse(nums, 0, len(nums) - 1)
+        self.reverse(nums, 0, k - 1)
+        self.reverse(nums, k, len(nums) - 1)
 
 
 A = [1, 2, 3, 4, 5, 6, 7]
