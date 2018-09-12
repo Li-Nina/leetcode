@@ -49,6 +49,20 @@ public class Solution {
         return nums[nums.length - 1];
     }
 
+    public int[] plusOne(int[] digits) {
+        for (int i = digits.length - 1; i >= 0; i--) {
+            if (digits[i] < 9) {
+                digits[i] = digits[i] + 1;
+                return digits;
+            } else {
+                digits[i] = 0;
+            }
+        }
+        int[] ints = new int[digits.length + 1];
+        ints[0] = 1;
+        return ints;
+    }
+
 
     public static void main(String[] args) {
         int[] a = {1, 2, 3};
