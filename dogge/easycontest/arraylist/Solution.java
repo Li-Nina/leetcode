@@ -63,12 +63,25 @@ public class Solution {
         return ints;
     }
 
+    public void moveZeroes(int[] nums) {
+        int firstZero = -1;
+        for (int i = 0; i < nums.length; i++) {
+            if (firstZero == -1 && nums[i] == 0) {
+                firstZero = i;
+            } else if (firstZero != -1 && nums[i] != 0) {
+                nums[firstZero] = nums[i];
+                nums[i] = 0;
+                firstZero++;
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
-        int[] a = {1, 2, 3};
-        int i = -1;
-        System.out.println(a[i = 2]);
-        System.out.println(i);
+        int[] a = {0, 1, 0, 3, 12};
+        int[] b = {1, 1, 0, 3, 0, 12};
+        new Solution().moveZeroes(a);
+        System.out.println(Arrays.toString(a));
     }
 
 }
