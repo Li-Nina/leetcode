@@ -15,12 +15,12 @@ class Solution:
         :rtype: bool
         """
         for rows in board:
-            if self.isValid(rows)==False:
+            if self.isValid(rows) == False:
                 return False
         i = 0
         while i < 9:
             cols = [x[i] for x in board]
-            if self.isValid(cols)==False:
+            if self.isValid(cols) == False:
                 return False
             i += 1
         for a in [0, 3, 6]:
@@ -43,3 +43,6 @@ gougou = [
     [".", ".", ".", ".", "8", ".", ".", "7", "9"]
 ]
 print(Solution().isValidSudoku(gougou))
+
+# b = [i for i in range(100) if i % 2 == 0]
+# print(b)
