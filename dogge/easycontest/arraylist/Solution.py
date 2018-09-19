@@ -21,8 +21,41 @@ class Solution:
                 j += 1
         return result
 
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        dic = {val: i for (i, val) in enumerate(nums)}
+        for i, val in enumerate(nums):
+            j = dic.get(target - val)
+            if j is not None and j != i:
+                return [i, j]
 
-a = [1, 2, 2, 1]
-b = [2, 2]
-x = Solution().intersect(a, b)
-print x
+    def twoSum2(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        dic = dict()
+        for index, val in enumerate(nums):
+            j = dic.get(target - val)
+            if j is not None and j != index:
+                return [j, index]
+            dic[val] = index
+
+    def reverseString(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        return s[::-1]
+
+
+nums = [1, 2, 3, 4, 5]
+print nums[:-2]
+
+# a = {10: 2}
+# print (a.get(10))

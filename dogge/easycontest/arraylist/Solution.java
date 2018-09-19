@@ -76,12 +76,82 @@ public class Solution {
         }
     }
 
+    public boolean isValidSudoku(char[][] board) {
+        HashSet<Character> aLine = new HashSet<>();
+        HashSet<Character> a1Squre = new HashSet<>();
+        HashSet<Character> a2Squre = new HashSet<>();
+        HashSet<Character> a3Squre = new HashSet<>();
+        char[] chars;
+        for (int i = 0; i < board.length; i++) {
+            chars = board[i];//每一行
+            for (int j = 0; j < chars.length; j++) {
+                if (dealSet(chars[j], aLine) == 1) {
+                    return false;
+                }
+
+                if (j < 3 && dealSet(chars[j], a1Squre) == 1) {
+                    return false;
+                } else if (j >= 3 && j < 6 && dealSet(chars[j], a2Squre) == 1) {
+                    return false;
+                } else if (j >= 6 && dealSet(chars[j], a3Squre) == 1) {
+                    return false;
+                }
+            }
+            aLine.clear();
+            if (i % 3 == 2) {
+                a1Squre.clear();
+                a2Squre.clear();
+                a3Squre.clear();
+            }
+        }
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (dealSet(board[j][i], aLine) == 1) {
+                    return false;
+                }
+            }
+            aLine.clear();
+        }
+        return true;
+    }
+
+
+    private int dealSet(Character c, HashSet<Character> set) {
+        if (c != '.' && set.contains(c)) {
+            return 1;
+        } else {
+            set.add(c);
+            return 0;
+        }
+    }
+
+
+    public void rotate(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = i; j < matrix.length - 1 - i; j++) {
+                int x = i, y = j;
+                int move = matrix[x][y];
+                for (int k = 0; k < 4; k++) {
+                    int i1 = y;
+                    int j1 = matrix.length - 1 - x;
+                    int temp = matrix[i1][j1];
+                    matrix[i1][j1] = move;
+                    move = temp;
+                    x = i1;
+                    y = j1;
+                }
+            }
+        }
+    }
 
     public static void main(String[] args) {
-        int[] a = {0, 1, 0, 3, 12};
-        int[] b = {1, 1, 0, 3, 0, 12};
-        new Solution().moveZeroes(a);
-        System.out.println(Arrays.toString(a));
+        int[][] matrix = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}};
+        new Solution().rotate(matrix);
+        System.out.println(Arrays.deepToString(matrix));
     }
 
 }

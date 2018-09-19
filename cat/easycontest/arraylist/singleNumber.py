@@ -35,6 +35,7 @@ class Solution:
         return a
 
 
+
 A = [4, 1, 2, 1, 2]
 print(sorted(A))
 print(Solution().singleNumber(A))
