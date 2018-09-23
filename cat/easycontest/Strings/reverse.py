@@ -12,6 +12,6 @@ class Solution:
             return int(x[::-1]) if -2**31<=int(x)<=2**31-1 else 0
 
 
-b = -123
+b = -1239999
 print(Solution().reverse(b))
 
