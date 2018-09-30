@@ -1,3 +1,6 @@
+import re
+
+
 class Solution:
     def intersect(self, nums1, nums2):
         """
@@ -53,9 +56,79 @@ class Solution:
         """
         return s[::-1]
 
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        x = str(x)
+        if x[0] == '-':
+            return int('-' + x[:0:-1]) if -2 ** 31 <= int('-' + x[:0:-1]) <= 2 ** 31 - 1 else 0
+        else:
+            return int(x[::-1]) if -2 ** 31 <= int(x[::-1]) <= 2 ** 31 - 1 else 0
 
-nums = [1, 2, 3, 4, 5]
-print nums[:-2]
+    def firstUniqChar(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        dic = {}
+        result = len(s)
+        for i, v in enumerate(s):
+            dic[v] = (1 if dic.get(v) is None else dic.get(v)[0] + 1, i)
+        for k, v in dic.items():
+            result = v[1] if v[0] == 1 and v[1] < result else result
+        return result if result != len(s) else -1
 
-# a = {10: 2}
-# print (a.get(10))
+    def isAnagram(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        return ''.join(sorted(s)) == ''.join(sorted(t))
+
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        m = [i for i in s.lower() if i.isalnum()]
+        return m == m[::-1]
+
+    def myAtoi(self, str):
+        """
+        :type str: str
+        :rtype: int
+        """
+        int_str = []
+        for c in str.lstrip():
+            if c.isdigit():
+                int_str.append(c)
+            elif not int_str and (c == '+' or c == '-'):
+                int_str.append(c)
+            else:
+                break
+        if int_str and not (len(int_str) == 1 and not int_str[0].isdigit()):
+            result = int(''.join(int_str))
+            if result > 2147483647:
+                return 2147483647
+            elif result < -2147483648:
+                return -2147483648
+            else:
+                return result
+        else:
+            return 0
+
+    def strStr(self, haystack, needle):
+        """
+        :type haystack: str
+        :type needle: str
+        :rtype: int
+        """
+        m = re.compile(needle).search(haystack)
+        return m.span()[0] if m else -1
+
+
+x = Solution().strStr("helloll", "")
+print(x)
