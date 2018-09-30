@@ -129,6 +129,12 @@ class Solution:
         m = re.compile(needle).search(haystack)
         return m.span()[0] if m else -1
 
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+
 
 x = Solution().strStr("helloll", "")
 print(x)
