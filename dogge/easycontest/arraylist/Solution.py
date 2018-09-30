@@ -136,6 +136,5 @@ class Solution:
         """
 
 
-
 x = Solution().strStr("helloll", "")
 print(x)
