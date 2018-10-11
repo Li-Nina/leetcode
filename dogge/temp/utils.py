@@ -12,9 +12,9 @@ class A:
 
 class B:
     def haha(self):
-        print A().max().__closure__[0].cell_contents
-        print A().max().__closure__[1].cell_contents
-        print A().max().__closure__[2].cell_contents
+        print (A().max().__closure__[0].cell_contents)
+        print (A().max().__closure__[1].cell_contents)
+        print (A().max().__closure__[2].cell_contents)
 
 
 B().haha()

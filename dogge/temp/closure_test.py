@@ -1,5 +1,3 @@
-from temp.utils import *
-
 def line_conf():
     b = 15
 
@@ -15,6 +13,5 @@ print(my_line.__closure__)
 print(my_line.__closure__[0])
 print(my_line.__closure__[0].cell_contents)
 
-hehe()
 
 # print(my_line.__closure__[1].cell_contents)
