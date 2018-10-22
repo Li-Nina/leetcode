@@ -135,6 +135,42 @@ class Solution:
         :rtype: str
         """
 
+    def reverseList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        if not head:
+            return head
+        pre_head = None
+        node = head
+        while node:
+            tmp = node.next
+            node.next, pre_head = pre_head, node
+            node = tmp
+        return pre_head
 
-x = Solution().strStr("helloll", "")
+    def reverseList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        if not head:
+            return head
+        pre_head = None
+        node = head
+        while node:
+            tmp = node.next
+            node.next, pre_head = pre_head, node
+            node = tmp
+        return pre_head
+
+
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+
+# x = Solution().hehe()
 print(x)
