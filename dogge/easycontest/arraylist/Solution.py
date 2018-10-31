@@ -165,6 +165,39 @@ class Solution:
             node = tmp
         return pre_head
 
+    def mergeTwoLists(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        head = ListNode(0)
+        node = head
+        while l1 and l2:
+            if l1.val > l2.val:
+                node.next = l2
+                l2 = l2.next
+            else:
+                node.next = l1
+                l1 = l1.next
+            node = node.next
+        node.next = l1 if l1 else l2
+        return head.next
+
+    def hasCycle(self, head):
+        """
+        :type head: ListNode
+        :rtype: bool
+        """
+        begin = head
+        while head and head.next:
+            if head.next == begin:
+                return True
+            n = head.next
+            head.next = begin
+            head = n
+        return False
+
 
 class ListNode:
     def __init__(self, x):
@@ -172,5 +205,13 @@ class ListNode:
         self.next = None
 
 
+a = ListNode(1)
+b = ListNode(2)
+c = ListNode(3)
+a.next = b
+b.next = c
+while a:
+    print(a.val)
+    a = a.next
 # x = Solution().hehe()
-print(x)
+# print(x)
