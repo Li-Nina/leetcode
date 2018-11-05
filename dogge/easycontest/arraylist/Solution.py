@@ -198,6 +198,97 @@ class Solution:
             head = n
         return False
 
+    def maxDepth(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if not root:
+            return 0
+        left = self.maxDepth(root.left)
+        right = self.maxDepth(root.right)
+        return left + 1 if left > right else right + 1
+
+    def isValidBST(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        res = []
+
+        def recurse(node):
+            if node:
+                recurse(node.left)
+                res.append(node.val)
+                recurse(node.right)
+
+        recurse(root)
+        if res:
+            pre = res[0]
+            for r in res[1:]:
+                if r <= pre:
+                    return False
+                pre = r
+        return True
+
+    def isValidBST2(self, root, lo=-float('inf'), hi=float('inf')):
+        if not root:
+            return True
+        elif not lo < root.val < hi:  # validate the root's value
+            return False
+
+        return self.isValidBST2(root.left, lo, root.val) and self.isValidBST2(root.right, root.val, hi)
+
+    def isSymmetric(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        if root:
+            return self.check(root.left, root.right)
+        else:
+            return True
+
+    def check(self, left, right):
+        if not left or not right:
+            return not left and not right
+        elif left.val != right.val:
+            return False
+        else:
+            return self.check(left.left, right.right) and self.check(left.right, right.left)
+
+    def isSymmetric2(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        if not root:
+            return True
+        q = [root.left, root.right]
+        while q:
+            n1 = q.pop()
+            n2 = q.pop()
+            if not n1 and not n2:
+                pass
+            elif not n1 or not n2:
+                return False
+            elif n1.val != n2.val:
+                return False
+            else:
+                q.append(n1.left)
+                q.append(n2.right)
+                q.append(n1.right)
+                q.append(n2.left)
+        return True
+
+
+# Definition for a binary tree node.
+class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
 
 class ListNode:
     def __init__(self, x):
