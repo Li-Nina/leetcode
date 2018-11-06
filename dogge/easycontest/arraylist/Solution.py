@@ -279,6 +279,8 @@ class Solution:
                 q.append(n2.right)
                 q.append(n1.right)
                 q.append(n2.left)
+
+            # print("hehehhe")
         return True
 
 
@@ -306,3 +308,7 @@ while a:
     a = a.next
 # x = Solution().hehe()
 # print(x)
+
+if __name__ == '__main__':
+    pass
+    print("sdfsdfsd")
