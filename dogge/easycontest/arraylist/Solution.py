@@ -279,9 +279,40 @@ class Solution:
                 q.append(n2.right)
                 q.append(n1.right)
                 q.append(n2.left)
-
-            # print("hehehhe")
         return True
+
+    def levelOrder(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        result = []
+        queue = []
+        if root:
+            queue.append(root)
+        while queue:
+            sub = []
+            for i in queue:
+                if i.left:
+                    sub.append(i.left)
+                if i.right:
+                    sub.append(i.right)
+            result.append([i.val for i in queue])
+            queue = sub
+        return result
+
+    def sortedArrayToBST(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: TreeNode
+        """
+        if not nums:
+            return None
+        mid = (len(nums) - 1) // 2
+        node = TreeNode(nums[mid])
+        node.left = self.sortedArrayToBST(nums[0:mid])
+        node.right = self.sortedArrayToBST(nums[mid + 1:])
+        return node
 
 
 # Definition for a binary tree node.
@@ -298,17 +329,21 @@ class ListNode:
         self.next = None
 
 
-a = ListNode(1)
-b = ListNode(2)
-c = ListNode(3)
-a.next = b
-b.next = c
-while a:
-    print(a.val)
-    a = a.next
+# a = ListNode(1)
+# b = ListNode(2)
+# c = ListNode(3)
+# a.next = b
+# b.next = c
+# while a:
+#     print(a.val)
+#     a = a.next
 # x = Solution().hehe()
 # print(x)
 
 if __name__ == '__main__':
     pass
-    print("sdfsdfsd")
+l = [1, 2, 3, 4, 5]
+mid = (len(l) - 1) // 2
+print(l[mid])
+print(l[0:mid])
+print(l[mid + 1:])
