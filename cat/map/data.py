@@ -1,89 +1,21 @@
-province_data = [
-    ("安徽", 24),
-    ("北京", 269),
-    ("福建", 411.7),
-    ("甘肃", 9.5),
-    ("广东", 199.4),
-    ("广西", 44),
-    ("贵州", 937.5),
-    ("海南", 342.3),
-    ("河北", 12),
-    ("河南", 650.9),
-    ("黑龙江", 208.2),
-    ("湖北", 211.5),
-    ("湖南", 84),
-    ("江苏", 459),
-    ("江西", 6),
-    ("辽宁", 39.3),
-    ("内蒙古", 59),
-    ("宁夏", 125.5),
-    ("山东", 91.9),
-    ("山西", 5.3),
-    ("陕西", 22.8),
-    ("上海", 42.1),
-    ("四川", 95),
-    ("天津", 48),
-    ("西藏", 231.5),
-    ("新疆", 375.8),
-    ("云南", 99),
-    ("浙江", 96.8),
-    ("重庆", 6.5),
-]
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+import pandas as pd
 
-city_data = [
-    ("贵阳市", 937.5),
-    ("许昌市", 619.4),
-    ("海口市", 349.6),
-    ("乌鲁木齐市", 348.5),
-    ("北京市", 269),
-    ("拉萨市", 216.5),
-    ("厦门市", 210.5),
-    ("哈尔滨市", 208.2),
-    ("南京市", 196.5),
-    ("武汉市", 191.5),
-    ("福州市", 187.9),
-    ("常熟市", 176),
-    ("广州市", 173.4),
-    ("宁夏", 106.5),
-    ("昆明市", 99.5),
-    ("杭州市", 94.8),
-    ("长沙市", 84),
-    ("青岛市", 64),
-    ("呼和浩特市", 59),
-    ("天津市", 48),
-    ("重庆市", 46.5),
-    ("南宁市", 44),
-    ("上海市", 42.1),
-    ("成都市", 37),
-    ("常州市", 35),
-    ("郑州市", 31.5),
-    ("沈阳市", 27.3),
-    ("新疆", 27.3),
-    ("合肥市", 24),
-    ("深圳市", 23),
-    ("无锡市", 23),
-    ("西安市", 22.8),
-    ("烟台市", 21.6),
-    ("江阴市", 20),
-    ("银川市", 19),
-    ("宜昌市", 18),
-    ("山南市", 12),
-    ("西昌市", 10),
-    ("涿州市", 10),
-    ("兰州市", 9.5),
-    ("大连市", 8),
-    ("绵阳市", 8),
-    ("苏州市", 7.5),
-    ("济南市", 6.3),
-    ("南昌市", 6),
-    ("太原市", 5.3),
-    ("鞍山市", 4),
-    ("拉萨", 3),
-    ("泉州市", 3),
-    ("云浮市", 3),
-    ("丽江市", 2.5),
-    ("恩施市", 2),
-    ("宁波市", 2),
-    ("石家庄市", 2),
-    ("泰兴市", 1),
-]
+province_day = pd.read_excel("./resources/出差省天数.xls")
+city_day = pd.read_excel("./resources/出差市天数.xls")
+
+province_price = pd.read_excel("./resources/出差省成本.xls")
+city_price = pd.read_excel("./resources/出差市成本.xls")
+
+province_day_data = list(zip(province_day["出差省"].values.tolist(), province_day["出差天数"].values.tolist()))
+city_day_data = list(zip(city_day["出差市"].values.tolist(), city_day["出差天数"].values.tolist()))
+print("province_day_data:", province_day_data, sep='\n')
+print("city_day_data:", city_day_data, sep='\n')
+
+province_price_data = list(zip(province_price["出差省"].values.tolist(), province_price["出差成本"].values.tolist()))
+city_price_data = list(zip(city_price["出差市"].values.tolist(), city_price["出差成本"].values.tolist()))
+print("province_price_data:", province_price_data, sep='\n')
+print("city_price_data:", city_price_data, sep='\n')
+
+home_icon = 'image://data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAnCAMAAAC7faEHAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAvVBMVEUAAAAfSH0fSHweSH0dSH0fSX0fSn8fR3sdSHsAP38fSHwfSX0fSXweSX0eSXwfSXweSXwfSXweSXwfR38eSHwfSHwfSX0fSXwfSH0fSX0fSHweSH0fSXwfSX0fSX0fSXweSXweSXwfSXweSX0gSX4fSH0fSXwfP38eSXweSH0gSHweSHwfSXweSX0eSX0bSH8fSXwfSXwfSH0fSXwfSHweSXwfSXweSX0fSX0fSXweSHwfRn4fSn0fSX3///+2E6yEAAAAPXRSTlMAguuGlPEwQDwE9ojx7+Lzj+jzIFT1gNX8q+7y9fby9Pv67PBv01AITNZ33+a/hBzl/qn5cff7z9X252H4LGPrQwAAAAFiS0dEPklkAOMAAAAJcEhZcwAAFxEAABcRAcom8z8AAAAHdElNRQfjAQUOBxeQtiQEAAABLUlEQVQ4y93RWUOCQBDA8RFB0TIRhJIOjyy6LDs0teb7f612hnNhF3nu/8Lu8nvYAYBKLaMNDTIttEzx7HRFdq+G9QmenA6oMz0bOkMBR8i5npaNYSwgoh8E5xoXMyB4gQbARO1SxhBDncsZw0tT7YqMoWWqnMxieFV1ZcbwuuKqLB6m5FSM4Y15nCXDSGyqYgJOC1Aw+vjKDMygYLMaN0sg3W1e4+bxHVs0glHjDBqmDQuatNbR1LewvLuH3EXdtCh38PD4VNhRz4O0l578Rtp5LqYlP0zrVgG1OuoCXgT/wXVe3xq59fukkfv4/NK60KPs+H4R3c/mk7DkNi63yebIDmSXlbos2fn8W53Cd3H4xC+57Te12+OBFwfc73ixldwa9Y0K7qevZb9LFn80o04DGKVQoQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxOS0wMS0wNVQyMTowNzoyMy0wNzowMJ/OgFQAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTktMDEtMDVUMjE6MDc6MjMtMDc6MDDukzjoAAAAAElFTkSuQmCC'
