@@ -2,3 +2,7 @@
 *.xml
 out
 dogge/temp
+map/maps
+charts/all_charts
+*.xls
+*.html
