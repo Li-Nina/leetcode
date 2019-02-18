@@ -6,3 +6,5 @@ map/maps
 charts/all_charts
 *.xls
 *.html
+__pycache__
+
