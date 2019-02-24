@@ -355,6 +355,25 @@ class Solution:
             nums[i] = nums[i - 1] + nums[i] if nums[i - 1] > 0 else nums[i]
         return max(nums)
 
+    the_nums = None
+    rob_sub_dict = {}
+
+    def rob(self, nums: 'List[int]') -> 'int':
+        self.the_nums = nums
+        self.rob_sub_dict = {}
+        return self.rob_sub(len(self.the_nums) - 1)
+
+    def rob_sub(self, end_index: int) -> int:
+        if end_index < 0:
+            self.rob_sub_dict[end_index] = 0
+            return 0
+        n1 = self.rob_sub_dict[end_index - 1] if self.rob_sub_dict.get(end_index - 1) is not None else self.rob_sub(
+            end_index - 1)
+        n2 = self.rob_sub_dict[end_index - 2] + self.the_nums[end_index] if self.rob_sub_dict.get(
+            end_index - 2) is not None else self.rob_sub(end_index - 2) + self.the_nums[end_index]
+        self.rob_sub_dict[end_index] = max(n1, n2)
+        return self.rob_sub_dict[end_index]
+
 
 # Definition for a binary tree node.
 class TreeNode(object):
@@ -382,4 +401,5 @@ class ListNode:
 # print(x)
 
 if __name__ == '__main__':
-    pass
+    x = Solution().rob([2, 7, 9, 3, 1])
+    print(x)
