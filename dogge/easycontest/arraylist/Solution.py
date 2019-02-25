@@ -1,6 +1,10 @@
 import re
 
 
+def isBadVersion(check):
+    pass
+
+
 class Solution:
     def intersect(self, nums1, nums2):
         """
@@ -374,6 +378,25 @@ class Solution:
         self.rob_sub_dict[end_index] = max(n1, n2)
         return self.rob_sub_dict[end_index]
 
+    # The isBadVersion API is already defined for you.
+    # @param version, an integer
+    # @return a bool
+    # def isBadVersion(version):
+    def firstBadVersion(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        left_good = 1
+        right_bad = n
+        while left_good < right_bad:
+            check = left_good + (right_bad - left_good) // 2
+            if isBadVersion(check):
+                right_bad = check
+            else:
+                left_good = check + 1
+        return right_bad
+
 
 # Definition for a binary tree node.
 class TreeNode(object):
@@ -401,5 +424,4 @@ class ListNode:
 # print(x)
 
 if __name__ == '__main__':
-    x = Solution().rob([2, 7, 9, 3, 1])
-    print(x)
+    print(5 // 3)
