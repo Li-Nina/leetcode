@@ -9,7 +9,7 @@ class Solution(object):
         """
         two pointer, curA and curB
         curA走完listA后指向listB，curB走完listB后指向listA。
-        如果有交点，curA和curB必在交点处相交。如果没有交点，curA和curB必同时走向末尾，指向null
+        如果有交点，curA和curB必在交点处相遇。如果没有交点，curA和curB必同时走向末尾，指向null
         :type head1, head1: ListNode
         :rtype: ListNode
         """
