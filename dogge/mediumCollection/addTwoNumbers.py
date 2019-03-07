@@ -17,9 +17,9 @@ class Solution:
             l1 = l1.next
             l2 = l2.next
         if l1:
-            plus = self.add_last(l1, plus, rst)
+            plus, rst = self.add_last(l1, plus, rst)
         elif l2:
-            plus = self.add_last(l2, plus, rst)
+            plus, rst = self.add_last(l2, plus, rst)
         if plus:
             rst.next = ListNode(plus)
         return head.next
@@ -28,14 +28,17 @@ class Solution:
         while node:
             v = node.val + plus
             val, plus = (v, 0) if v < 10 else (v - 10, v // 10)
-            rst.next = ListNode(val)
-            rst = rst.next
+            rst.next = ListNode(val)  # 在方法内直接修改引用参数的内容是生效的。
+            rst = rst.next  # 在方法内修改参数的索引引用，在方法外该参数是不生效的! 所以必须返回该参数，方法外接收。
             node = node.next
-        return plus
+        return plus, rst
 
 
 if __name__ == '__main__':
     a = ListNode(9)
     a.next = ListNode(9)
     b = ListNode(1)
-    Solution().addTwoNumbers(a, b)
+    x = Solution().addTwoNumbers(a, b)
+    while x:
+        print(x.val)
+        x = x.next
