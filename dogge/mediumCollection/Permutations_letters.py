@@ -14,5 +14,5 @@ class Solution:
 
 
 if __name__ == '__main__':
-    x = Solution().permutations_letter("abc")
+    x = Solution().permutations_letter("abb")
     print(x)
