@@ -22,8 +22,7 @@ class Solution:
 
         for i in range(row_num):
             for j in range(column_num):
-                seen = set()
-                if backtracking(i, j, 0, seen):
+                if backtracking(i, j, 0, set()):
                     return True
         return False
 
