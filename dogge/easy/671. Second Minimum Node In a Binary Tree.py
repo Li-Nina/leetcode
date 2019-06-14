@@ -20,3 +20,6 @@ class Solution:
         l = find(root.left, root.val)
         r = find(root.right, root.val)
         return min(l, r) if not (l == -1 or r == -1) else max(l, r)
+if __name__ == '__main__':
+    for l in reversed(range(8)):
+        print(l)

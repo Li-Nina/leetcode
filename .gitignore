@@ -7,4 +7,5 @@ charts/all_charts
 *.xls
 *.html
 __pycache__
+venv
 
